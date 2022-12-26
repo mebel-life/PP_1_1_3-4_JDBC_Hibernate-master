@@ -20,9 +20,10 @@ public class Util {
             Class.forName(DB_DRIVER);
             connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
             //System.out.println("Соединение установленно");
+            connection.setAutoCommit(false);
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Соединение ERROR");
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return connection;
     }
